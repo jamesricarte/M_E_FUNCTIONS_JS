@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timezones</title>
+</head>
+<body>
+  <h2>Current Time and Timezones</h2>
+  <p>Local Time: <span id="localTime"></span></p>
+  <div id="timezoneButtons">
+    <button onclick="displayTime('America/New_York')">New York</button>
+    <button onclick="displayTime('Europe/London')">London</button>
+    <button onclick="displayTime('Asia/Tokyo')">Tokyo</button>
+    <button onclick="displayTime('Australia/Sydney')">Sydney</button>
+  </div>
+  <div id="output"></div>
+
+  <script>
+    function displayTime(timezone) {
+      const date = new Date();
+      const options = { timeZone: timezone, weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      const dateTime = date.toLocaleString('en-US', options);
+      document.getElementById('output').textContent = `Current date and time in ${timezone}: ${dateTime}`;
+    }
+
+    function displayLocalTime() {
+      const date = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      const dateTime = date.toLocaleString('en-US', options);
+      document.getElementById('localTime').textContent = dateTime;
+    }
+
+    displayLocalTime();
+  </script>
+</body>
+</html>
